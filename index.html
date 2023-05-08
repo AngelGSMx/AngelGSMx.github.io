@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proyecto</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZXJBVDf7R4JqmSpopVPoduIGWx1IwpBM"></script>
+  <script type="text/javascript" src="js/plugins.js"></script>
+
+  <script src="https://unpkg.com/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/hunspell-spellchecker"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+
+</head>
+
+<body>
+  <div class="svg-wrap">
+    <svg width="64" height="64" viewBox="0 0 64 64">
+      <path id="arrow-left"
+        d="M26.667 10.667q1.104 0 1.885 0.781t0.781 1.885q0 1.125-0.792 1.896l-14.104 14.104h41.563q1.104 0 1.885 0.781t0.781 1.885-0.781 1.885-1.885 0.781h-41.563l14.104 14.104q0.792 0.771 0.792 1.896 0 1.104-0.781 1.885t-1.885 0.781q-1.125 0-1.896-0.771l-18.667-18.667q-0.771-0.813-0.771-1.896t0.771-1.896l18.667-18.667q0.792-0.771 1.896-0.771z">
+      </path>
+    </svg>
+
+    <svg width="64" height="64" viewBox="0 0 64 64">
+      <path id="arrow-right"
+        d="M37.333 10.667q1.125 0 1.896 0.771l18.667 18.667q0.771 0.771 0.771 1.896t-0.771 1.896l-18.667 18.667q-0.771 0.771-1.896 0.771-1.146 0-1.906-0.76t-0.76-1.906q0-1.125 0.771-1.896l14.125-14.104h-41.563q-1.104 0-1.885-0.781t-0.781-1.885 0.781-1.885 1.885-0.781h41.563l-14.125-14.104q-0.771-0.771-0.771-1.896 0-1.146 0.76-1.906t1.906-0.76z">
+      </path>
+    </svg>
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+
+  <div class="container-fluid">
+
+    <!-- HEADER -->
+
+    <section id="header">
+
+      <!-- NAVIGATION -->
+      <nav class="navbar navbar-fixed-top navbar-default bottom">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#header">OCR - Reconocimiento óptico de caracteres</a>
+          </div><!-- /.navbar-header -->
+
+          <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#header">Inicio</a></li>
+              <li><a href="#about">OCR</a></li>
+              <li><a href="#contact">Info</a></li>
+            </ul>
+          </div> <!-- /.navbar-collapse -->
+        </div> <!-- /.container -->
+      </nav>
+
+      <!-- SLIDER -->
+      <div class="header-slide">
+        <section>
+          <div id="loader" class="pageload-overlay">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60"
+              preserveAspectRatio="none">
+              <path d="M 0,0 0,60 80,60 80,0 Z M 80,0 80,60 0,60 0,0 Z" />
+            </svg>
+          </div> <!-- /.pageload-overlay -->
+
+          <div class="image-slide bg-fixed">
+            <div class="overlay">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+
+                    <div class="slider-content">
+                      <h1>IA - OCR</h1>
+                      <p>Proyecto Creado por estudiantes del ITSLP</p>
+                    </div>
+
+                  </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+              </div> <!-- /.container -->
+            </div> <!-- /.overlay -->
+          </div> <!-- /.image-slide -->
+
+          <nav class="nav-slide">
+            <a class="prev" href="#prev">
+              <span class="icon-wrap">
+                <svg class="icon" width="32" height="32" viewBox="0 0 64 64">
+                  <use xlink:href="#arrow-left">
+                </svg>
+              </span>
+              <div>
+                <span>Prev Photo</span>
+                <h3>...</h3>
+                <p>...</p>
+                <img alt="Previous thumb">
+              </div>
+            </a>
+            <a class="next" href="#next">
+              <span class="icon-wrap">
+                <svg class="icon" width="32" height="32" viewBox="0 0 64 64">
+                  <use xlink:href="#arrow-right">
+                </svg>
+              </span>
+              <div>
+                <span>Siguiente Photo</span>
+                <h3>...</h3>
+                <p>...</p>
+                <img alt="Next thumb">
+              </div>
+            </a>
+          </nav>
+        </section>
+
+        <script type="text/javascript">
+          var dataHeader = [
+            {
+              bigImage: "images/slide-1.jpg",
+              title: "IA - OCR",
+              author: "Alumnos de Ingeniera en Sistemas computacionales ITSLP"
+            },
+
+            {
+              bigImage: "images/slide-2.jpg",
+              title: "Materia: Inteligencia Artificial",
+              author: "Alumnos de Ingeniera en Sistemas computacionales ITSLP"
+            }
+          ],
+            loaderSVG = new SVGLoader(document.getElementById('loader'));
+          loaderSVG.show() 
+        </script>
+
+      </div><!-- /.header-slide -->
+    </section>
+
+    <!-- HEADER END -->
+
+
+    <!-- ABOUT -->
+
+    <section id="about" class="light">
+      <header class="title">
+        <h2>Sobre el <span>OCR</span></h2>
+        <p>Un OCR, o reconocimiento óptico de caracteres, es una tecnología que permite a los ordenadores leer texto escrito a mano o impreso en una imagen o documento escaneado. OCR se utiliza para convertir documentos físicos en formato digital, lo que permite su almacenamiento, edición y búsqueda electrónica.</p>
+      </header>
+
+
+
+<!-- ------------------------------------- -->
+
+<div class="arrival_section layout_padding">
+  <div class="container">
+
+      <div>
+
+        <div>
+        <h3>OCR con Tesseract.js</h3>
+<!--
+        <div class="caja-1">
+       
+           
+              <input type="file" name="file-7" id="file-7" class="inputfile inputfile-7" data-multiple-caption="{count} archivos seleccionados" multiple />
+              <label for="file-7">
+              <span class="iborrainputfile"></span>
+              <strong>
+              <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+              Seleccionar archivo
+              </strong>
+              </label>
+              <br>
+           
+           <img id="imagePreview">
+        </div>
+
+        
+        <div class="caja-2">
+           
+           <button id="runButton">Ejecutar OCR</button>
+           <div id="output"></div>
+           <br>
+           <button id="downloadButton">Descargar texto generado</button>
+        </div>
+   
+        </div>
+      -->
+<!------------------------------------------>
+
+<div class="containerdiv">
+  <div>        
+                <input type="file" name="file-7" id="file-7" class="inputfile inputfile-7" data-multiple-caption=" {count} archivos seleccionados" multiple />
+                <label for="file-7">
+                <span class="iborrainputfile"></span>
+                <strong>
+                <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                Seleccionar archivo
+                </strong>
+                </label>
+                <br>
+            
+            <img id="imagePreview">
+  </div>
+  <div>
+        <br>
+        <h4>Resultado de OCR:</h4>
+        
+        <div id="output"></div>
+        
+        <br>
+        <button id="downloadButton">Descargar texto generado</button>
+  </div>
+  <div>
+
+        <label><h4>Correcion de texto en:    </h4> </label>
+    <select id="languageSelector" onchange="corregirTexto()" class="Lenguaje">
+      Correcion de texto en:
+      <option value="es">Español</option>
+      <option value="en-US">Inglés</option>
+    </select>
+    <br>
+          <div id="resultado"></div>
+  </div>
+
+
+
+  <div id="traduccion">
+    <h4>Traduccion:
+    <button onclick="miFuncion()">clic</button></h4>
+    <!----------------------------Traduccion-------------------------------->
+
+  
+  <div id="texto-traducido">
+      Aquí irá el texto traducido
+  </div>
+  
+
+  </div>
+</div>
+<!------------------------------------------>
+
+<script src="https://unpkg.com/nlp_compromise"></script>
+
+<script>
+
+  // Seleccionar el elemento de entrada de archivo
+  const fileInput = document.getElementById('file-7');
+
+  // Mostrar la vista previa de la imagen después de seleccionar el archivo
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const image = document.getElementById('imagePreview');
+      image.onload = async () => {
+// Ejecutar OCR en la imagen
+const result = await Tesseract.recognize(imagePreview.src, 'spa');
+
+// Agregar un punto al final de cada párrafo si no existe
+const textWithFinalPeriods = result.data.text.replace(/([^\n]+\w)[^\n]*$/gm, '$1.');
+
+// Convertir la primera letra de cada párrafo en mayúscula
+const textWithCapitalLetters = textWithFinalPeriods.replace(/(^|\n)([a-z])/g, (match, p1, p2) => {
+    return p1 + p2.toUpperCase();
+});
+
+// Agregar un punto al final del texto si no existe
+const textWithFinalPeriod = textWithCapitalLetters.replace(/([^.])(\s*)$/, '$1.$2');
+
+// Mostrar el resultado en la página
+const output = document.getElementById('output');
+output.innerText = textWithFinalPeriod;
+
+
+        // Mostrar el botón de descarga y agregar evento clic
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.style.display = 'block';
+        downloadButton.addEventListener('click', () => {
+          // Crear un objeto Blob que contiene el texto generado
+          const blob = new Blob([output.innerText], {type: 'text/plain'});
+
+          // Crear un enlace de descarga y hacer clic en él
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'texto_generado.txt';
+          a.click();
+
+          // Liberar la URL del objeto Blob
+          URL.revokeObjectURL(a.href);
+        });
+      };
+      image.src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  })
+  ;
+
+  // Ocultar el botón de descarga hasta que se genere el texto
+  const downloadButton = document.getElementById('downloadButton');
+  downloadButton.style.display = 'none';
+
+  // Código para mostrar el nombre del archivo seleccionado
+  'use strict';
+  ;( function ( document, window, index )
+  {
+    var inputs = document.querySelectorAll( '.inputfile' );
+    Array.prototype.forEach.call( inputs, function( input )
+    {
+      var label   = input.nextElementSibling,
+          labelVal = label.innerHTML;
+
+      input.addEventListener( 'change', function( e )
+      {
+        var fileName = '';
+        if( this.files && this.files.length > 1 )
+            fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+        else
+            fileName = e.target.value.split( '\\' ).pop();
+
+        if( fileName )
+            label.querySelector( 'span' ).innerHTML = fileName;
+        else
+            label.innerHTML = labelVal;
+      });
+    });
+  }( document, window, 0 ));
+
+
+
+//Div editable
+  var div = document.getElementById("output");
+  div.setAttribute("contenteditable", true);
+
+/*--Correccion de Texto-----------------*/
+function corregirTexto() {
+  var textToCorrect = document.getElementById("output").innerText;
+  var language = document.getElementById("languageSelector").value;
+
+  // Usamos la API de LanguageTool
+  fetch("https://languagetool.org/api/v2/check", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: new URLSearchParams({
+      text: textToCorrect,
+      language: language,
+      disabledRules: "UPPERCASE_SENTENCE_START",
+      ignoreTags: "ver"
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Marcamos las palabras corregidas con un color diferente
+      var correctedText = '';
+      var lastEndOffset = 0;
+      data.matches.forEach(match => {
+        // Verificamos si la palabra está completamente en mayúsculas
+        var allCaps = match.context.text.slice(match.context.offset, match.context.offset + match.context.length).toUpperCase() === match.context.text.slice(match.context.offset, match.context.offset + match.context.length);
+
+        // Si la palabra está completamente en mayúsculas, la ignoramos
+        if (allCaps) {
+          return;
+        }
+
+        var correction = match.replacements[0].value;
+        var startOffset = match.offset;
+        var endOffset = match.offset + match.length;
+
+        // Agregamos el texto sin corregir desde el final de la última corrección
+        correctedText += textToCorrect.slice(lastEndOffset, startOffset);
+
+        // Verificamos si la palabra es la primera de la oración o después de un punto
+        if (lastEndOffset === 0 || textToCorrect.charAt(lastEndOffset - 1) === '.') {
+          correction = correction.charAt(0).toUpperCase() + correction.slice(1);
+        }
+
+        // Agregamos la palabra corregida
+        correctedText += '<span class="correction">' + correction + '</span>';
+
+        lastEndOffset = endOffset;
+      });
+      // Agregamos cualquier texto restante después de la última corrección
+      correctedText += textToCorrect.slice(lastEndOffset);
+
+      document.getElementById("resultado").innerHTML = correctedText;
+    })
+    .catch(error => console.error(error));
+}
+
+
+setInterval(corregirTexto, 1000); // 1000 milisegundos = 1 segundo
+
+
+
+//Traduccion de Texto ----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------
+
+function traducirTexto() {
+    // Obtiene el texto original del primer div
+    var textoOriginal = $('#resultado').text();
+
+    // Realiza una solicitud GET a la API de traducción de MyMemory
+    $.get('https://api.mymemory.translated.net/get', {
+        q: textoOriginal,
+        langpair: 'es|en'
+    }, function(respuesta) {
+        // Obtiene el texto traducido de la respuesta JSON
+        var textoTraducido = respuesta.responseData.translatedText;
+
+        // Muestra el texto traducido en el segundo div
+        $('#texto-traducido').text(textoTraducido);
+    });
+}
+
+
+
+
+</script>
+
+<!-- Correccion de Texto -->
+
+
+
+
+<!---------------------------------------------
+        <script>
+          
+
+           
+                      // Seleccionar el elemento de entrada de archivo
+                      const fileInput = document.getElementById('file-7');
+                
+                      // Mostrar la vista previa de la imagen después de seleccionar el archivo
+                      fileInput.addEventListener('change', () => {
+                        const file = fileInput.files[0];
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                          const image = document.getElementById('imagePreview');
+                          image.src = event.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                      });
+                    
+
+          
+
+                      // Ejecutar OCR después de hacer clic en el botón
+                      const runButton = document.getElementById('runButton');
+                      runButton.addEventListener('click', async () => {
+                        // Obtener la imagen
+                        const image = document.getElementById('imagePreview');
+                
+                        // Ejecutar OCR en la imagen
+                        const result = await Tesseract.recognize(image.src, 'spa');
+                
+                        // Mostrar el resultado en la página
+                        const output = document.getElementById('output');
+                        output.innerText = result.data.text;
+                
+                        // Mostrar el botón de descarga y agregar evento clic
+                        const downloadButton = document.getElementById('downloadButton');
+                        downloadButton.style.display = 'block';
+                        downloadButton.addEventListener('click', () => {
+                          // Crear un objeto Blob que contiene el texto generado
+                          const blob = new Blob([output.innerText], {type: 'text/plain'});
+                
+                        // Crear un enlace de descarga y hacer clic en él
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = 'texto_generado.txt';
+                        a.click();
+                
+                        // Liberar la URL del objeto Blob
+                        URL.revokeObjectURL(a.href);
+                      });
+                    });
+            
+
+                    'use strict';
+                    ;( function ( document, window, index )
+                    {
+                      var inputs = document.querySelectorAll( '.inputfile' );
+                      Array.prototype.forEach.call( inputs, function( input )
+                      {
+                          var label	 = input.nextElementSibling,
+                            labelVal = label.innerHTML;
+
+                          input.addEventListener( 'change', function( e )
+                          {
+                            var fileName = '';
+                            if( this.files && this.files.length > 1 )
+                                fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+                            else
+                                fileName = e.target.value.split( '\\' ).pop();
+
+                            if( fileName )
+                                label.querySelector( 'span' ).innerHTML = fileName;
+                            else
+                                label.innerHTML = labelVal;
+                          });
+                      });
+                    }( document, window, 0 ));
+
+
+      </script>
+
+  -->
+
+
+
+
+
+
+     </div>
+
+    </div></div>
+    </section>
+
+
+<!-- ------------------------------------- -->
+
+
+    <section id="contact" class="dark">
+      <header class="title">
+        <h2>Informa<span>cion</span></h2>
+      </header>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 animated" data-animate="fadeInLeft">
+            <form action="#">
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Nombre Completo">
+                </div>
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Fecha de Nacimiento">
+                </div>
+                <div class="col-md-12">
+                  <input type="email" class="form-control" placeholder="Correo Institucional">
+                </div>
+                <div class="col-md-12">
+                  <textarea class="form-control" rows="3" placeholder="Asunto"></textarea>
+                </div>
+                <div class="col-md-12">
+                  <button class="btn btn-default submit">Enviar Mensaje</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-md-4 animated" data-animate="fadeInRight">
+            <address>
+              <span><i class="fa fa-map-marker fa-lg"></i> Instituto Tecnológico de San Luis Potosí, Tecnológico, Col.
+                Unidad, Ponciano Arriaga, Soledad de Graciano Sánchez, San Luis Potosí</span>
+              <span><i class="fa fa-phone fa-lg"></i> (+52) 444 - 152 - 14 - 74</span>
+              <span><i class="fa fa-envelope-o fa-lg"></i> <a
+                  href="mailto:contact@example.com">contacto@slp.tecnm.mx</a></span>
+              <span><i class="fa fa-globe fa-lg"></i> <a href="https://slp.tecnm.mx/">Mas información...</a></span>
+            </address>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>Realizado por <a href="">JOSE ANGEL GARCIA SAUCEDO 
+              -- ITZEL ALEJANDRA FLORES CARRILLO
+              -- XIOMARA GIL HERNANDEZ 
+              -- DANNA PAOLA GARCIA ALVARADO
+              -- JENNIFER GUADALUPE ARRIAGA RODRIGUEZ</a></p>
+            <p><small>ISC - INTELIGENCIA ARTIFICIAL by LAZARO ALVARADO CANO</small></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.container-fluid -->
+
+  <!-- SCRIPT -->
+  <script src="js/app.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
